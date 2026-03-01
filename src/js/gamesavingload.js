@@ -1,16 +1,10 @@
-import json from "./parser";
-import read from "./reader";
+import json from "./parser.js";
+import read from "./reader.js";
 
 export default class GameSavingLoader {
 
   static load() {
-
-    const data = read(); // возвращается Promise!
-    const value = json(data); // возвращается Promise!
-    return value;
-
+    return read().then(data => json(data));
   }
 
 }
-
-console.log(GameSavingLoader.load());
